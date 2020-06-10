@@ -1,5 +1,7 @@
 package pl.s21790.tetris;
 
+import java.util.Random;
+
 public class Shape {
 
     enum Blocks {
@@ -50,6 +52,31 @@ public class Shape {
     public int y(int pointer) {
         return coordinates[pointer][1];
     }
+    public Blocks getShape() {
+        return blockShape;
+    }
 
+    public void randomShapeGenerator() {
+        Random random = new Random();
+        int x = Math.abs(random.nextInt()) % 7 + 1;
+        Blocks[] values = Blocks.values();
+        setShape(values[x]);
+    }
+
+    public int minX() {
+        int min = coordinates[0][0];
+        for(int i = 0; i < 4; i++) {
+            min = Math.min(min, coordinates[i][0]);
+        }
+        return min;
+    }
+
+    public int minY() {
+        int min = coordinates[0][1];
+        for (int i = 0; i < 4; i++) {
+            min = Math.min(min, coordinates[i][1]);
+        }
+        return min;
+    }
 
 }
