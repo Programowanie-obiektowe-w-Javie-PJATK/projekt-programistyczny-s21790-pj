@@ -79,4 +79,33 @@ public class Shape {
         return min;
     }
 
+    public Shape rotateLeft() {
+        if(blockShape == Blocks.Oblock){
+            return this;
+        }
+
+        Shape result = new Shape();
+        result.blockShape = blockShape;
+
+        for(int i = 0; i < 4; i++) {
+            result.setX(i, y(i));
+            result.setY(i, -x(i));
+        }
+        return result;
+    }
+
+    public Shape rotateRight() {
+        if(blockShape == Blocks.Oblock){
+            return this;
+        }
+
+        Shape result = new Shape();
+        result.blockShape = blockShape;
+
+        for(int i = 0; i < 4; i++) {
+            result.setX(i, -y(i));
+            result.setY(i, x(i));
+        }
+        return result;
+    }
 }
