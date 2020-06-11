@@ -82,7 +82,7 @@ public class Board extends JPanel implements ActionListener {
             curBlock.setShape(Blocks.emptyBlock);
             time.stop();
             start = false;
-            statusBar.setText("Game Over");
+            statusBar.setText("Game Over | Score: " + linesRemoved);
         }
     }
 
