@@ -15,7 +15,7 @@ public class Shape {
         Zblock(new int[][] {{0, -1}, {0, 0}, {-1, 0}, {-1, 1}}),
         ;
         public int[][] coordinates;
-        private Blocks(int[][] coordinates) {
+        Blocks(int[][] coordinates) {
             this.coordinates = coordinates;
         }
     }
@@ -63,14 +63,6 @@ public class Shape {
         setShape(values[x]);
     }
 
-    public int minX() {
-        int min = coordinates[0][0];
-        for(int i = 0; i < 4; i++) {
-            min = Math.min(min, coordinates[i][0]);
-        }
-        return min;
-    }
-
     public int minY() {
         int min = coordinates[0][1];
         for (int i = 0; i < 4; i++) {
@@ -90,21 +82,6 @@ public class Shape {
         for(int i = 0; i < 4; i++) {
             result.setX(i, y(i));
             result.setY(i, -x(i));
-        }
-        return result;
-    }
-
-    public Shape rotateRight() {
-        if(blockShape == Blocks.Oblock){
-            return this;
-        }
-
-        Shape result = new Shape();
-        result.blockShape = blockShape;
-
-        for(int i = 0; i < 4; i++) {
-            result.setX(i, -y(i));
-            result.setY(i, x(i));
         }
         return result;
     }
