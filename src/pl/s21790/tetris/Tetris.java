@@ -7,13 +7,17 @@ public class Tetris extends JFrame {
 
     private JLabel statusBar;
 
-
     public Tetris() {
         statusBar = new JLabel("0");
         add(statusBar, BorderLayout.SOUTH);
-
-        setSize(400, 600);
+        Board board = new Board(this);
+        add(board);
+        board.start();
+        setSize(200, 400);
+        setTitle("Tetris");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public JLabel getStatusBar() {
@@ -21,8 +25,12 @@ public class Tetris extends JFrame {
     }
 
     public static void main(String[] args) {
-        Tetris tetris = new Tetris();
-        tetris.setLocationRelativeTo(null);
-        tetris.setVisible(true);
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Tetris();
+            }
+        });
+
     }
 }
